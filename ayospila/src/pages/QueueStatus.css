@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Figtree", sans-serif;
+}
+
+.queue-status-container{
+    background-color: #0d2f76;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.ayospila-header{
+    background-color: white;
+    width: 1020px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+}
+.ayospila-header h1{
+    font-size: 30px;
+    color: #4d6ba5;
+    font-weight: bold;
+}
+.ayos-text{
+    color: #bcd8e9;
+}
+.pila-text{
+    color: #093383;
+}
+.ayospila-header p{
+    font-size: 20px;
+    font-weight: bold;
+    color: #99aacb;
+}
+.currently-serving-card{
+    width: 1320px;
+    height: 180px;
+    border-radius: 10px;
+    background-color: #22537b;
+    color: #64bd96;
+}
