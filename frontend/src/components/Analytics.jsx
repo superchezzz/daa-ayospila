@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Analytics.css';
 
-const API_BASE_URL = 'http://192.168.68.100:5001';
+const API_BASE_URL = 'http://192.168.68.104:5001';
 
 const AnalyticsCard = ({ title, value }) => (
   <div className="analytics-card">
@@ -12,10 +12,10 @@ const AnalyticsCard = ({ title, value }) => (
 
 function Analytics() {
   const [ltoServiceAnalytics, setLtoServiceAnalytics] = useState({
-    totalCustomersToday: '...',
-    averageWaitTime: '...',
-    priorityCustomersServed: '...',
-    currentQueueLength: '...',
+    totalCustomersToday: '0',
+    averageWaitTime: '0',
+    priorityCustomersServed: '0',
+    currentQueueLength: '0',
   });
 
   const [fairnessMetrics, setFairnessMetrics] = useState({
@@ -60,10 +60,10 @@ function Analytics() {
         <div className="analytics-section">
             <h2 className="section-title">Fairness Metrics</h2>
             <div className="cards-grid">
-                 <AnalyticsCard title="PWD Avg Wait Time (Min)" value={fairnessMetrics.pwdAverageWaitTime} />
-                 <AnalyticsCard title="Senior Citizen Avg Wait Time (Min)" value={fairnessMetrics.seniorCitizenAverageWaitTime} />
-                 <AnalyticsCard title="Pregnant Avg Wait Time (Min)" value={fairnessMetrics.pregnantAverageWaitTime} />
-                 <AnalyticsCard title="Emergency Response Time (Min)" value={fairnessMetrics.emergencyResponseTime} />
+                 <AnalyticsCard title="PWD Avg Wait Time (Min)" value={fairnessMetrics.pwdAverageWaitTime ?? 'N/A'} />
+                 <AnalyticsCard title="Senior Citizen Avg Wait Time (Min)" value={fairnessMetrics.seniorCitizenAverageWaitTime ?? 'N/A'} />
+                 <AnalyticsCard title="Pregnant Avg Wait Time (Min)" value={fairnessMetrics.pregnantAverageWaitTime ?? 'N/A'} />
+                 <AnalyticsCard title="Emergency Response Time (Min)" value={fairnessMetrics.emergencyResponseTime ?? 'N/A'} />
             </div>
         </div>
     </div>

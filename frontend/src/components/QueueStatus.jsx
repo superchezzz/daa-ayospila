@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './QueueStatus.css';
 
 function QueueStatus() {
-  const API_BASE_URL = 'http://192.168.68.100:5001';
+  const API_BASE_URL = 'http://192.168.68.104:5001';
   
   const [currentlyServing, setCurrentlyServing] = useState(null);
   const [antiStarvationAlerts, setAntiStarvationAlerts] = useState([]);
