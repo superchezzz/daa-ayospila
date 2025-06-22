@@ -27,6 +27,7 @@
     justify-content: center;
     border-radius: 20px;
 }
+
 .ayospila-header h1{
     font-size: 30px;
     color: #4d6ba5;
@@ -43,6 +44,33 @@
     font-weight: bold;
     color: #99aacb;
 }
+
+
+.queue-options-container{
+    width: 538px;
+    height: 51px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex  ;
+    padding: 2px;
+}
+
+.option-button{
+    flex: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: none;
+    background-color: white;
+    gap:5px;
+    font-size: 16px;
+}
+
+.option-button:active{
+    background-color: pink;
+}
+
 .currently-serving-card{
     width: 1320px;
     height: 180px;
