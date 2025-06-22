@@ -10,7 +10,7 @@ function App() {
   const renderPage = () => {
     switch (activePage) {
       case 'addRegistrant':
-        return <AddRegistrant />;
+        return <AddRegistrant onRegistrationSuccess={() => setActivePage('queueStatus')} />;
       case 'analytics':
         return <Analytics />;
       case 'queueStatus':

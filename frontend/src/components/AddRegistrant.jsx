@@ -35,7 +35,7 @@ function AddRegistrant() {
     setSelectedServices(prev => ({ ...prev, [name]: checked }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const registrantData = {
       fullName,
@@ -51,9 +51,29 @@ function AddRegistrant() {
       services: Object.keys(selectedServices).filter(key => selectedServices[key]),
     };
     
-    console.log("Form Data to be sent to Backend:", registrantData);
-    // TODO: Send registrantData to your backend API
-    // fetch('/api/registrants', { method: 'POST', body: JSON.stringify(registrantData) })
+    try {
+      // --- IMPORTANT: USE YOUR IP ADDRESS ---
+      const API_BASE_URL = 'http://192.168.68.100:5001';
+      
+      const response = await fetch(`${API_BASE_URL}/api/customers`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(registrantData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        alert(`Successfully registered ${result.customer.fullName} with queue number ${result.customer.queueNumber}!`);
+        // If you want to navigate away after success, you'll need the prop from App.jsx
+        // onRegistrationSuccess(); 
+      } else {
+        throw new Error(result.error || 'Failed to register.');
+      }
+    } catch (error) {
+      console.error("Registration Error:", error);
+      alert(`Error: ${error.message}`);
+    }
   };
 
   return (
