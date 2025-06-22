@@ -53,14 +53,29 @@ class Customer(db.Model):
 # These are helper functions that contain the main business logic and algorithms.
 
 def quick_sort(arr):
+    """
+    PURPOSE: To sort the customer queue using a custom QuickSort algorithm
+    - It takes a list of customer dictionaries as input.
+    - It sorts that list in descending order (highest score comes first).
+    - The sorting key is the nested 'score' value, which is accessed via
+      x['priority']['score'] for each customer dictionary 'x'.
+    """
     if len(arr) <= 1:
         return arr
     else:
+        # We choose the middle element of the list as our pivot.
         pivot = arr[len(arr) // 2]
-        # Partition the list based on the nested priority score
+        
+        # Partition the list into three separate lists based on the pivot's score:
+        # 1. 'left':  All customers with a higher score than the pivot.
+        # 2. 'middle': All customers with the exact same score as the pivot.
+        # 3. 'right':  All customers with a lower score than the pivot.
         left = [x for x in arr if x['priority']['score'] > pivot['priority']['score']]
         middle = [x for x in arr if x['priority']['score'] == pivot['priority']['score']]
         right = [x for x in arr if x['priority']['score'] < pivot['priority']['score']]
+        
+        # Recursively call quick_sort on the 'left' and 'right' partitions
+        # and then combine the sorted lists to get the final result.
         return quick_sort(left) + middle + quick_sort(right)
 
 
