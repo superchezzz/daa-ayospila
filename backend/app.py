@@ -3,9 +3,11 @@ import datetime
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
+from flask_cors import CORS
 
 # All comments from your version are preserved.
 app = Flask(__name__)
+CORS(app)
 DB_USER = 'root'
 DB_PASSWORD = 'mysqlpassword1234' # Make sure this is correct
 DB_HOST = 'localhost'
