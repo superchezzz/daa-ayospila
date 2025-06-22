@@ -64,9 +64,7 @@ function QueueStatus() {
 
       <div className="currently-serving-card">
         <h3 className="card-title">Currently Serving</h3>
-        <p className="current-queue-number">
-          Queue {currentlyServing.queueNumber} - {currentlyServing.name} (Score: {currentlyServing.score})
-        </p>
+        <p className="current-queue-number">Queue {currentlyServing.queueNumber} - {currentlyServing.name} (Score: {currentlyServing.score})</p>
         <p className="current-service">Service: {currentlyServing.service}</p>
         <p className="current-category">Category: {currentlyServing.category}</p>
         <button className="serve-next-button">Serve Next Customer</button>

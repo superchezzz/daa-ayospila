@@ -14,7 +14,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 20px;
 }
 
 .ayospila-header{
@@ -77,4 +77,47 @@
     border-radius: 10px;
     background-color: #22537b;
     color: #64bd96;
+    border: 1px solid #74E291;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.card-title{
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.current-queue-number{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.current-service,
+.current-category{
+    font-size: 14px;
+}
+
+.serve-next-button{
+    background-color: #74E291;
+    color: white;
+    width: 170px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    font-size: 14px;
+}
+
+.serve-next-button:hover{
+    background-color: #64bd96;
+}
+
+.anti-starvation-alerts-card{
+    width: 1320px;
+    height: 120px;
+    background-color: white;
+    display: flex;
+    align-items: start;
 }
