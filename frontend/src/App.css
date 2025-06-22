@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&display=swap');
+
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Figtree", sans-serif;
+  background-color: #0d2f76;
+  height: 100%;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.ayospila-header {
+  background-color: white;
+  width: 1020px;
+  max-width: 95%;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.ayospila-header h1 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.ayos-text {
+  color: #bcd8e9;
+}
+
+.pila-text {
+  color: #093383;
+}
+
+.ayospila-header p {
+  font-size: 20px;
+  font-weight: bold;
+  color: #99aacb;
+}
+
+.queue-options-container {
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  padding: 4px;
+  gap: 4px;
+  border: 2px solid #2B3467;
+}
+
+.option-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-color: white;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2B3467;
+  cursor: pointer;
+  padding: 8px 16px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.option-button.active, .option-button:hover {
+  background-color: #2B3467;
+  color: white;
+  border: 2px solid #2B3467;
+}
+
+
+.option-button.active {
+    border: 2px solid #FFFFFF;
+}
+
+.option-button svg path {
+    transition: stroke 0.3s;
+}
+
+.option-button.active svg path, .option-button:hover svg path {
+    stroke: white;
+}
+
+.page-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

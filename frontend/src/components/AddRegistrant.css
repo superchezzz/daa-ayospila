@@ -1,0 +1,177 @@
+.add-registrant-container {
+    width: 100%;
+    max-width: 1320px;
+    background-color: #F4F6FA; /* Light background for the form container */
+    border-radius: 10px;
+    padding: 25px 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-title {
+    font-size: 22px;
+    color: #0d2f76;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.form-top-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+}
+
+.form-group input[type="text"],
+.form-group select {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    min-width: 180px;
+}
+
+/* Urgency Selector Styles */
+.urgency-selector {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.urgency-box {
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: #fff;
+    border-right: 1px solid #ccc;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.urgency-box:last-child {
+    border-right: none;
+}
+
+.urgency-box.active {
+    background-color: #093383;
+    color: white;
+}
+
+/* Appointment Controls Styles */
+.appointment-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.radio-group label {
+    margin-right: 15px;
+}
+
+.date-time-inputs {
+    display: flex;
+    gap: 10px;
+}
+
+.date-time-inputs input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Services Section */
+.services-section {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.services-section > .section-title {
+    font-size: 18px;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.service-category-box {
+    background-color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.service-title {
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.service-title::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #093383;
+}
+
+.service-options {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    padding-left: 20px;
+}
+
+.options-list {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.options-list label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+/* Add Registrant Button */
+.add-registrant-button {
+    align-self: center;
+    width: 100%;
+    padding: 15px;
+    background-color: #364A7F;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: background-color 0.2s;
+}
+
+.add-registrant-button:hover {
+    background-color: #2b3a65;
+}

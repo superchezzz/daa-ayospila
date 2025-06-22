@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Figtree", sans-serif;
+    min-height: 100;
+}
+
+.queue-status-container {
+    background-color: #0d2f76;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.ayospila-header {
+    background-color: white;
+    width: 1020px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.ayospila-header h1 {
+    font-size: 30px;
+    color: #4d6ba5;
+    font-weight: bold;
+}
+
+.ayos-text {
+    color: #bcd8e9;
+}
+
+.pila-text {
+    color: #093383;
+}
+
+.ayospila-header p {
+    font-size: 20px;
+    font-weight: bold;
+    color: #99aacb;
+}
+
+.queue-options-container {
+    width: 538px;
+    height: 51px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    padding: 2px;
+}
+
+.option-button {
+    flex: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: none;
+    background-color: white;
+    gap: 5px;
+    font-size: 16px;
+}
+
+.option-button:active {
+    background-color: pink;
+}
+
+.currently-serving-card {
+    width: 1320px;
+    height: 180px;
+    border-radius: 10px;
+    background-color: #22537b;
+    color: #64bd96;
+    border: 1px solid #74E291;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.current-queue-number {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.current-service,
+.current-category {
+    font-size: 14px;
+}
+
+.serve-next-button {
+    background-color: #74E291;
+    color: white;
+    width: 170px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    font-size: 14px;
+}
+
+.serve-next-button:hover {
+    background-color: #64bd96;
+}
+
+.anti-starvation-alerts-card {
+    width: 100%;
+    max-width: 1320px;
+    height: 120px; 
+    background-color: white;
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+    padding: 20px 25px;
+    border-radius: 10px;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.alerts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-left: 5px;
+    width: 100%; 
+    flex-grow: 1; 
+    overflow-y: auto; 
+}
+
+.anti-starv-title {
+    font-size: 16px;
+    color: #EB455F;
+    font-weight: 700;
+}
+
+.alert-item {
+    color: #4A4A4A;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.alert-icon {
+    margin-right: 8px;
+}
+
+.aging-bonus {
+    color: #EB455F;
+    margin-left: 5px;
+}
+
+.queue-table-container {
+    width: 100%;
+    max-width: 1320px;
+    height: 300px;
+    margin-top: 15px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: auto;
+    padding-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 16px 20px;
+    border-bottom: 1px solid #EEEEEE;
+    color: #333;
+    vertical-align: middle;
+}
+
+th {
+    font-weight: 600;
+    font-size: 14px;
+    position: sticky;
+    top: 0;
+    background-color: #F7F7F7;
+    z-index: 1;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.priority-tag {
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    display: inline-block;
+}
+
+.priority-high {
+    background-color: #FFD6D6;
+    color: #D32F2F;
+}
+
+.priority-medium {
+    background-color: #FFF0D1;
+    color: #FFA000;
+}
+
+.priority-low {
+    background-color: #DFFFE0;
+    color: #388E3C;
+}

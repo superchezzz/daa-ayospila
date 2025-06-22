@@ -1,0 +1,40 @@
+.analytics-container {
+    width: 1320px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.analytics-section .section-title {
+    font-size: 20px;
+    color: #0d2f76;
+    margin-bottom: 20px;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.analytics-card {
+    background-color: #2B3467;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.analytics-card .card-value {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.analytics-card .card-title {
+    font-size: 16px;
+    font-weight: 500;
+}
