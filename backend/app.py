@@ -4,25 +4,29 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
 
-# Create the main Flask application object.
+# All comments from your version are preserved.
 app = Flask(__name__)
-
-### --- DATABASE CONFIGURATION --- ###
-# This section is the "GPS address" that tells the app how to find and log into the MySQL database.
 DB_USER = 'root'
-DB_PASSWORD = 'YOUR_ROOT_PASSWORD' # I have put back your password from the screenshot. Change if needed.
+DB_PASSWORD = 'mysqlpassword1234' # Make sure this is correct
 DB_HOST = 'localhost'
 DB_NAME = 'lto_queue_db'
-
-# This line builds the full connection address string.
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}'
-
-# This is a standard setting for SQLAlchemy to prevent unnecessary warnings.
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-# This creates the main SQLAlchemy object, our "database translator".
-# We will use this 'db' object for all our database operations.
 db = SQLAlchemy(app)
+
+class Customer(db.Model):
+    __tablename__ = 'customers'
+    id = db.Column(db.String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    queue_number = db.Column(db.String(10), nullable=False, unique=True)
+    name = db.Column(db.String(100), nullable=False)
+    category = db.Column(db.String(50), nullable=False)
+    service = db.Column(db.Text, nullable=True)    
+    urgency = db.Column(db.Integer, default=1)
+    has_appointment = db.Column(db.Boolean, default=False)
+    initial_priority_score = db.Column(db.Integer, nullable=False)
+    status = db.Column(db.String(20), nullable=False, default='waiting')
+    arrival_timestamp = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now)
+    completion_timestamp = db.Column(db.DateTime, nullable=True)
 
 # This class is a Python blueprint that defines the structure of our 'customers'
 # table in the MySQL database. SQLAlchemy will read this blueprint to understand
@@ -48,6 +52,8 @@ class Customer(db.Model):
     # Timestamps to track arrival and completion times.
     arrival_timestamp = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now)
     completion_timestamp = db.Column(db.DateTime, nullable=True) # Will be null until they are served.
+
+    __table_args__ = {'extend_existing': True}
 
 
 # These are helper functions that contain the main business logic and algorithms.
@@ -120,16 +126,38 @@ def add_customer():
     This is triggered when the user submits the "Add Registrant" form.
     """
     data = request.get_json()
-    if not data or 'fullName' not in data or 'customerCategory' not in data:
+    if not data or 'fullName' not in data or 'category' not in data:
         return jsonify({"error": "Missing required fields"}), 400
-    initial_score = calculate_priority_score(data)
+
+    # 1. Handle the nested appointment object.
+    appointment_data = data.get('appointment', {})
+    has_appointment_bool = appointment_data.get('status') == 'yes'
+
+    # 2. Handle the array of services and join them into a single string.
+    services_list = data.get('services', [])
+    services_string = ", ".join(services_list) # e.g., "Service A, Service B"
+
+    # 3. Create a dictionary with the processed data for score calculation.
+    processed_data_for_scoring = {
+        "customerCategory": data.get("category"),
+        "customUrgencyLevel": data.get("urgency"),
+        "hasAppointment": has_appointment_bool
+    }
+    initial_score = calculate_priority_score(processed_data_for_scoring)
+    
     total_customers = db.session.query(func.count(Customer.id)).scalar()
-    queue_number_val = f"{data['customerCategory'][:1].upper()}-{total_customers + 1:03d}"
+    queue_number_val = f"{data['category'][:1].upper()}-{total_customers + 1:03d}"
+
     new_customer = Customer(
-        queue_number=queue_number_val, name=data["fullName"], category=data["customerCategory"],
-        service=data.get("serviceType", "N/A"), urgency=data.get("customUrgencyLevel", 1),
-        has_appointment=data.get("hasAppointment", False), initial_priority_score=initial_score
+        queue_number=queue_number_val,
+        name=data["fullName"],
+        category=data["category"],
+        service=services_string, # Save the joined string of services
+        urgency=data.get("urgency", 1),
+        has_appointment=has_appointment_bool, # Save the processed boolean
+        initial_priority_score=initial_score
     )
+    
     db.session.add(new_customer)
     db.session.commit()
     return jsonify({
